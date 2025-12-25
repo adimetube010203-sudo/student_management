@@ -11,10 +11,9 @@ if (isset($_POST['submit'])) {
             VALUES ('$name', '$age', '$email', '$phone')";
 
     if (mysqli_query($conn, $sql)) {
-        echo "تم إضافة الطالب بنجاح";
-    } else {
-        echo "خطأ في الإضافة";
-    }
+    $success = true;
+}
+
 }
 ?>
 
@@ -23,26 +22,37 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <title>إضافة طالب</title>
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 
+<div class="container">
+
 <h2>إضافة طالب جديد</h2>
 
+<?php if (isset($success)) { ?>
+    <div class="success">تم إضافة الطالب بنجاح</div>
+<?php } ?>
+
 <form method="post">
-    الاسم: <br>
-    <input type="text" name="name" required><br><br>
+    <label>الاسم</label>
+    <input type="text" name="name" required>
 
-    العمر: <br>
-    <input type="number" name="age" required><br><br>
+    <label>العمر</label>
+    <input type="number" name="age" required>
 
-    الإيميل: <br>
-    <input type="email" name="email" required><br><br>
+    <label>الإيميل</label>
+    <input type="email" name="email" required>
 
-    الهاتف: <br>
-    <input type="text" name="phone"><br><br>
+    <label>الهاتف</label>
+    <input type="text" name="phone">
 
     <button type="submit" name="submit">حفظ</button>
 </form>
 
+</div>
+
 </body>
+
 </html>
