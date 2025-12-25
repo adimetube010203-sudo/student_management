@@ -29,25 +29,33 @@ $result = mysqli_query($conn, "SELECT * FROM students");
         <th>التحكم</th>
     </tr>
 
-    <?php
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            echo "<td>".$row['id']."</td>";
-            echo "<td>".$row['name']."</td>";
-            echo "<td>".$row['age']."</td>";
-            echo "<td>".$row['email']."</td>";
-            echo "<td>".$row['phone']."</td>";
-            echo "<td>
-                    <a href='#' class='btn-edit'>تعديل</a>
-                    <a href='#' class='btn-delete'>حذف</a>
-                  </td>";
-            echo "</tr>";
-        }
-    } else {
-        echo "<tr><td colspan='6'>لا يوجد طلاب</td></tr>";
-    }
-    ?>
+    <?php if (mysqli_num_rows($result) > 0) { ?>
+        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+            <tr>
+                <td><?php echo $row['id']; ?></td>
+                <td><?php echo $row['name']; ?></td>
+                <td><?php echo $row['age']; ?></td>
+                <td><?php echo $row['email']; ?></td>
+                <td><?php echo $row['phone']; ?></td>
+                <td>
+                    <a href="edit_student.php?id=<?php echo $row['id']; ?>" class="btn-edit">
+                        تعديل
+                    </a>
+
+                    <a href="delete_student.php?id=<?php echo $row['id']; ?>"
+                       class="btn-delete"
+                       onclick="return confirm('هل أنت متأكد من الحذف؟');">
+                        حذف
+                    </a>
+                </td>
+            </tr>
+        <?php } ?>
+    <?php } else { ?>
+        <tr>
+            <td colspan="6">لا يوجد طلاب</td>
+        </tr>
+    <?php } ?>
+
 </table>
 
 </div>

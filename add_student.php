@@ -49,6 +49,8 @@ if (isset($_POST['submit'])) {
     <input type="text" name="phone">
 
     <button type="submit" name="submit">حفظ</button>
+    <a href="index.php" class="btn-back">⬅ الرجوع لعرض الطلاب</a>
+
 </form>
 
 </div>
