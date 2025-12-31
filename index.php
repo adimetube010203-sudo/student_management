@@ -15,7 +15,7 @@ $result = mysqli_query($conn, "SELECT * FROM students");
 
 <div class="container-table">
 
-<h2>قائمة الطلاب المسجلين </h2>
+<h2>قائمة الطلاب المسجلين  الجدد</h2>
 
 <a href="add_student.php" class="btn-add">+ إضافة طالب</a>
 
